@@ -33,10 +33,11 @@ The orginal data set contains multiple measurements from the experiments carried
 
 ###Legend
 The column names can be understood following the description below
-*<b>t</b>: Any column starting with t represent time domain signals.
-*<b>f</b>: Any column starting with f represent frequency domain signals.
-*<b>BodyAcc</b>: Rerepsent measuremetn corresponding to body acceleration signals.
-*<b>GravityAcc</b>: Rerepsent measuremetn corresponding to gravity acceleration signals.
-*<b>Mag</b>: Represent magnitude.
+
+* <b>t</b>: Any column starting with t represent time domain signals.
+* <b>f</b>: Any column starting with f represent frequency domain signals.
+* <b>BodyAcc</b>: Rerepsent measuremetn corresponding to body acceleration signals.
+* <b>GravityAcc</b>: Rerepsent measuremetn corresponding to gravity acceleration signals.
+* <b>Mag</b>: Represent magnitude.
 
 
