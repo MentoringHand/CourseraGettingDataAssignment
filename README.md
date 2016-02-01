@@ -28,7 +28,7 @@ activities <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors
 
 * Data provided is scattered in three different files. These files are identified with format x_* , subject*, and y_*. Use feature list table created above to name the columns. This is done in two steps once for test data and then for train data.
   
-	Get the test data from X_test, subject_test, y_test and column bind them all to get single table with test data.
+	* Get the test data from X_test, subject_test, y_test and column bind them all to get single table with test data.
 
 <code>  xtest <- read.table("UCI HAR Dataset/test/X_test.txt", stringsAsFactors=FALSE)</code>
   <code>names(xtest) <- features$varname</code>
@@ -37,7 +37,7 @@ activities <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors
   <code>xtest <- cbind(xtestsubject, xtestactivity, xtest)
 </code>
 
-	Get the test data from X_train, subject_train, y_train and column bind them all to get single table with train data.
+	* Get the test data from X_train, subject_train, y_train and column bind them all to get single table with train data.
 
   <code>xtrain <- read.table("UCI HAR Dataset/train/X_train.txt", quote="\"", comment.char="", stringsAsFactors=FALSE)</code>
   <code>names(xtrain) <- features$varname </code>
@@ -52,12 +52,13 @@ activities <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors
 </code>
 
 * Join the result data with activities table to resolve the activityId to actual name and remove the activity column as it is redundant. Make the names removing unnecessary punctuations and meaning less numbers. After this point of time the data frame x3 is the tidier data that can be used for any further analysis.
+
   <code> x3 <- select(tbl_df(merge(activities, xs)), -activity) </code>
   <code>names(x3) <- gsub("\\(\\)", "",gsub("^[0-9]{3} ", "",names(x3)))
 </code>
 
   
-  * As there are multiple obervations for particular activity and subject. To get mean over each combination we set group_by over x3 on activityname and subject. Then summarise the data with mean function group by activityname and subject. Write the end result to a file.
+* As there are multiple obervations for particular activity and subject. To get mean over each combination we set group_by over x3 on activityname and subject. Then summarise the data with mean function group by activityname and subject. Write the end result to a file.
 
  <code>
   activity_subject_summary <- group_by(x3, activityname, subject) %>% summarise_each(c("mean"))</code>
